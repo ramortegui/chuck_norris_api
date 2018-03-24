@@ -1,6 +1,8 @@
 # ChuckNorris
 
-**TODO: Add description**
+OTP application to consume [https://api.chucknorris.io](https://api.chucknorris.io)
+
+##
 
 ## Installation
 
