@@ -3,7 +3,7 @@ defmodule ChuckNorris.API do
   @url "https://api.chucknorris.io/jokes/"
 
   @doc """
-   Returns a list of categories of Chuck Norris jokes
+  Returns a list of categories of Chuck Norris jokes
   """
   def categories do
     HTTPoison.get!(@url <> "categories")
@@ -12,7 +12,7 @@ defmodule ChuckNorris.API do
   end
 
   @doc """
-    Returns a tuple with the category an a random joke
+  Returns a tuple with the category an a random joke
   """
   def get_joke(category) do
     joke =
@@ -25,20 +25,20 @@ defmodule ChuckNorris.API do
   end
 
   @doc """
-    Get the value of the api response
+  Get the value of the api response
   """
   def get_value(data), do: data["value"]
 
   @doc """
-    Returns the body of the request if status code
-    is 200
+  Returns the body of the request if status code
+  is 200
   """
   def handle_request(%{status_code: 200} = response) do
     response.body
   end
 
   @doc """
-    Returns Not found message for 404 responses
+  Returns Not found message for 404 responses
   """
   def handle_request(%{status_code: 404}) do
     "{ \"value\": \"Not found.\" }"
