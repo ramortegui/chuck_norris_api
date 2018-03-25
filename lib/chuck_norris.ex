@@ -6,7 +6,6 @@ defmodule ChuckNorris do
   use Application
 
   def start(_type, _args) do
-    IO.puts "Starting the application"
     ChuckNorris.Supervisor.start_link()
   end
 end
