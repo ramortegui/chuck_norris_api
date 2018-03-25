@@ -4,15 +4,13 @@ defmodule ChuckNorris.Server do
   """
   use GenServer
 
-  @interval :timer.minutes(5)
-
   def start_link(_args) do
     GenServer.start_link(__MODULE__, %{categories: [], jokes: []}, name: __MODULE__)
   end
 
   def init(_state) do
     new_state = refresh_state()
-    Process.send_after(self(), :refresh_state, @interval)
+    Process.send_after(self(), :refresh_state, interval())
     {:ok, new_state}
   end
 
@@ -45,7 +43,7 @@ defmodule ChuckNorris.Server do
   end
 
   defp schedule_refresh do
-    Process.send_after(self(), :refresh_state, @interval)
+    Process.send_after(self(), :refresh_state, interval())
   end
 
   defp refresh_state do
@@ -59,5 +57,9 @@ defmodule ChuckNorris.Server do
       |> Enum.map(&Task.await/1)
 
     %{categories: categories, jokes: jokes}
+  end
+
+  def interval() do
+    Application.get_env(:chuck_norris, :interval) || :timer.minutes(5)
   end
 end
