@@ -15,6 +15,19 @@ def deps do
   ]
 end
 ```
+## Use
+
+If added as dependency the server will start ChuckNorris.Server and load a joke
+for each category that could be accessed by:
+
+```elixir
+
+iex> ChuckNorris.Server.get_jokes
+
+```
+
+The jokes will be refreshed each 5 min.
+
 
 ## Documentation
 
