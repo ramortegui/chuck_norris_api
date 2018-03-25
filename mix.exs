@@ -25,7 +25,8 @@ defmodule ChuckNorris.MixProject do
   defp deps do
     [
       {:httpoison, "~> 1.0"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
 
