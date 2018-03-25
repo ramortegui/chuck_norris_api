@@ -1,18 +1,12 @@
 defmodule ChuckNorris do
   @moduledoc """
-  Documentation for ChuckNorris.
+  Application that consumes and maintain jokes of
+  api.chucknorris.io
   """
+  use Application
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> ChuckNorris.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def start(_type, _args) do
+    IO.puts "Starting the application"
+    ChuckNorris.Supervisor.start_link()
   end
 end
