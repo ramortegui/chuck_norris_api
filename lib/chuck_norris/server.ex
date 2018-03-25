@@ -2,10 +2,11 @@ defmodule ChuckNorris.Server do
   @moduledoc """
   Server to consulme `ChuckNorris.API`
   """
+  use GenServer
 
-  @interval :timer.hours(1)
+  @interval :timer.minutes(5)
 
-  def start_link() do
+  def start_link(_args) do
     GenServer.start_link(__MODULE__, %{categories: [], jokes: []}, name: __MODULE__)
   end
 
